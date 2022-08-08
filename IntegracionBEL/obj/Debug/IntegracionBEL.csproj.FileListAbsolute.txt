@@ -1,0 +1,6 @@
+C:\Users\Christian.morales\Desktop\Requerimiento\IntegracionOracle\IntegracionBEL\bin\Debug\IntegracionBEL.dll
+C:\Users\Christian.morales\Desktop\Requerimiento\IntegracionOracle\IntegracionBEL\bin\Debug\IntegracionBEL.pdb
+C:\Users\Christian.morales\Desktop\Requerimiento\IntegracionOracle\IntegracionBEL\obj\Debug\IntegracionBEL.csproj.AssemblyReference.cache
+C:\Users\Christian.morales\Desktop\Requerimiento\IntegracionOracle\IntegracionBEL\obj\Debug\IntegracionBEL.csproj.CoreCompileInputs.cache
+C:\Users\Christian.morales\Desktop\Requerimiento\IntegracionOracle\IntegracionBEL\obj\Debug\IntegracionBEL.dll
+C:\Users\Christian.morales\Desktop\Requerimiento\IntegracionOracle\IntegracionBEL\obj\Debug\IntegracionBEL.pdb
