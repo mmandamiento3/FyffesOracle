@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntegracionBEL
 {
-    public class BE_Ausencias
+    public class BE_SaldoVacaciones
     {
         public String CodigoPais { get; set; }
         public String CodigoCompania { get; set; }

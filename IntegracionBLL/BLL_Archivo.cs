@@ -15,11 +15,11 @@ namespace IntegracionBLL
     public class BLL_Archivo
     {
 
-        public void mInsertarArchivo(List<BE_Ausencias> Ausencia)
+        public void mInsertarArchivoAusencias(List<BE_Ausencias> Ausencia)
         {
             try
             {
-                 new DA_Integracion().mInsertarArchivoBD(Ausencia);
+                 new DA_Integracion().mInsertarArchivoAusenciasBD(Ausencia);
             }
             catch (Exception ex)
             {
@@ -29,6 +29,89 @@ namespace IntegracionBLL
             
         }
 
+
+        public void mInsertarArchivoCeses(List<BE_Ceses> Ceses)
+        {
+            try
+            {
+                new DA_Integracion().mInsertarArchivoCesesBD(Ceses);
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException(ex, "Exception Policy");
+                throw ex;
+            }
+
+        }
+
+        public void mInsertarArchivoIngresos(List<BE_Ingresos> Ingresos)
+        {
+            try
+            {
+                new DA_Integracion().mInsertarArchivoIngresoBD(Ingresos);
+            }
+
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException(ex, "Exception Policy");
+                throw ex;
+            }
+
+        }
+
+
+        public void mInsertarArchivoPermisos(List<BE_Permisos>Permisos)
+        {
+            try
+            {
+                new DA_Integracion().mInsertarArchivoPermisosBD(Permisos);
+            }
+
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException(ex, "Exception Policy");
+                throw ex;
+            }
+        }
+
+        public void mInsertarArchivoSaldoVacaciones(List<BE_SaldoVacaciones> Saldos)
+        {
+            try
+            {
+                new DA_Integracion().mInsertarArchivoSaldosVacBD(Saldos);
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException(ex, "Exception Policy");
+                throw ex;
+            }
+        }
+
+        public void mInsertarArchivoSindicatos(List<BE_Sindicatos>Sindicatos)
+        {
+            try
+            {
+                new DA_Integracion().mInsertarArchivoSindicatoBD(Sindicatos);
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException(ex, "Exception Policy");
+                throw ex;
+            }
+        }
+
+        public void mInsertarArchivoVacaciones(List<BE_Vacaciones> Vacaciones)
+        {
+            try
+            {
+                new DA_Integracion().mInsertarArchivoVacacionesBD(Vacaciones);
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException(ex, "Exception Policy");
+                throw ex;
+            }
+        }
 
     }
 }

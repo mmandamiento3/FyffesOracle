@@ -42,6 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BE_Ausencias.cs" />
+    <Compile Include="BE_Ceses.cs" />
+    <Compile Include="BE_Ingresos.cs" />
+    <Compile Include="BE_Permisos.cs" />
+    <Compile Include="BE_SaldoVacaciones.cs" />
+    <Compile Include="BE_Sindicatos.cs" />
+    <Compile Include="BE_Vacaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
