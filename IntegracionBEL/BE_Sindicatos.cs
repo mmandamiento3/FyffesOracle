@@ -15,8 +15,8 @@ namespace IntegracionBEL
         public String CodigoTipoDocIdentidad { get; set; }
         public String NroDocIdentidad { get; set; }
         public String CodigoSindicato { get; set; }
-        public String PorcentajeSindicato { get; set; }
-        public String MontoSindicato { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaFin { get; set; }
         public String SituacionOperacion { get; set; }
         public String FechaHoraOperacionRegistroOracle { get; set; }
         public String IdentificadorUltimoUsuario { get; set; }

@@ -17,11 +17,7 @@ namespace IntegracionBEL
         public String FechaInicio { get; set; }
         public String FechaFin { get; set; }
         public String NumeroDias { get; set; }
-        public String TipoGoceVacacional { get; set; }
-        public String FechaInicioPeriodoVacacional { get; set; }
-        public String FechaFinPeriodoVacacional { get; set; }
-        public String AnhioPeriodoVacacional { get; set; }
-        public String RegimenTipoVacacion { get; set; }
+        public String TipoGoceVacacional { get; set; }    
         public String FechaRegistroVacacion { get; set; }
         public String SituacionOperacion { get; set; }
         public String FechaHoraOperacionRegistroOracle { get; set; }

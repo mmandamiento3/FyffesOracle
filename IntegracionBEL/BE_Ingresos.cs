@@ -8,7 +8,7 @@ namespace IntegracionBEL
 {
     public class BE_Ingresos
     {
-        public String TipoOperacion { get; set; }               
+        public String TipoOperacion { get; set; }
         public String CodigoPais { get; set; }
         public String CodigoCompania { get; set; }
         public String CodigoEmpleadoFRACTAL { get; set; }
@@ -69,9 +69,10 @@ namespace IntegracionBEL
         public String PuebloPertenencia { get; set; }
         public String CodigoBanco { get; set; }
         public String NumeroCuenta { get; set; }
-        public String Moneda { get; set; }
+        public String MonedaCuenta { get; set; }
         public String TipoCuenta { get; set; }
         public String Sueldo { get; set; }
+        public String MonedaSueldo {get;set;}
         public String CodigoRegimenSalarial { get; set; }
         public String CodigoFormaPago { get; set; }
         public String TipoPago { get; set; }

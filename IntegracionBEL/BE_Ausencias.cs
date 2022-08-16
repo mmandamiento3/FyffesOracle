@@ -17,8 +17,7 @@ namespace IntegracionBEL
         public String FechaInicio { get; set; }
         public String FechaFin { get; set; }
         public String NumeroDias { get; set; }
-        public String MotivoLicencia { get; set; }
-        public String GrupoLicencia { get; set; }
+        public String MotivoLicencia { get; set; }        
         public String TipoPagoLicencia { get; set; }
         public String SituacionOperacion { get; set; }
         public String FechaHoraOperacionRegistroOracle { get; set; }

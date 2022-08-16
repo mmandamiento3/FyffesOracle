@@ -156,40 +156,40 @@ namespace IntegracionDAL
             }
         }
 
-        public void mInsertarArchivoSaldosVacBD(List<BE_SaldoVacaciones> archivos)
-        {
-            List<BE_SaldoVacaciones> ListaFiltradaCRI = archivos.Where(x => x.CodigoPais == strPaisCRI).ToList(); //Obtenemos todos los registros por CRI
-            List<BE_SaldoVacaciones> ListaFiltradaGTM = archivos.Where(x => x.CodigoPais == strPaisGTM).ToList();
-            List<BE_SaldoVacaciones> ListaFiltradaHND = archivos.Where(x => x.CodigoPais == strPaisHND).ToList();
-            List<BE_SaldoVacaciones> ListaFiltradaECU = archivos.Where(x => x.CodigoPais == strPasiECU).ToList();
-            List<BE_SaldoVacaciones> ListaFiltradaBZE = archivos.Where(x => x.CodigoPais == strPaisBZE).ToList();
+        //public void mInsertarArchivoSaldosVacBD(List<BE_SaldoVacaciones> archivos)
+        //{
+        //    List<BE_SaldoVacaciones> ListaFiltradaCRI = archivos.Where(x => x.CodigoPais == strPaisCRI).ToList(); //Obtenemos todos los registros por CRI
+        //    List<BE_SaldoVacaciones> ListaFiltradaGTM = archivos.Where(x => x.CodigoPais == strPaisGTM).ToList();
+        //    List<BE_SaldoVacaciones> ListaFiltradaHND = archivos.Where(x => x.CodigoPais == strPaisHND).ToList();
+        //    List<BE_SaldoVacaciones> ListaFiltradaECU = archivos.Where(x => x.CodigoPais == strPasiECU).ToList();
+        //    List<BE_SaldoVacaciones> ListaFiltradaBZE = archivos.Where(x => x.CodigoPais == strPaisBZE).ToList();
 
-            //hacemos la conexión para que vayan a la Bd de CRI
-            //contamos que hayan registros para el país
+        //    //hacemos la conexión para que vayan a la Bd de CRI
+        //    //contamos que hayan registros para el país
 
-            if (ListaFiltradaCRI.Count > 0)
-            {
-                mInsertarSaldosBD(ListaFiltradaCRI, ConexionCRI);
-            }
+        //    if (ListaFiltradaCRI.Count > 0)
+        //    {
+        //        mInsertarSaldosBD(ListaFiltradaCRI, ConexionCRI);
+        //    }
 
-            if (ListaFiltradaGTM.Count > 0)
-            {
-                mInsertarSaldosBD(ListaFiltradaGTM, ConexionGTM);
-            }
-            if (ListaFiltradaHND.Count > 0)
-            {
-                mInsertarSaldosBD(ListaFiltradaHND, ConexionHND);
-            }
-            if (ListaFiltradaECU.Count > 0)
-            {
-                mInsertarSaldosBD(ListaFiltradaECU, ConexionECU);
-            }
-            if (ListaFiltradaBZE.Count > 0)
-            {
-                mInsertarSaldosBD(ListaFiltradaBZE, ConexionBZE);
-            }
+        //    if (ListaFiltradaGTM.Count > 0)
+        //    {
+        //        mInsertarSaldosBD(ListaFiltradaGTM, ConexionGTM);
+        //    }
+        //    if (ListaFiltradaHND.Count > 0)
+        //    {
+        //        mInsertarSaldosBD(ListaFiltradaHND, ConexionHND);
+        //    }
+        //    if (ListaFiltradaECU.Count > 0)
+        //    {
+        //        mInsertarSaldosBD(ListaFiltradaECU, ConexionECU);
+        //    }
+        //    if (ListaFiltradaBZE.Count > 0)
+        //    {
+        //        mInsertarSaldosBD(ListaFiltradaBZE, ConexionBZE);
+        //    }
 
-        }
+        //}
 
         public void mInsertarArchivoSindicatoBD(List<BE_Sindicatos> archivos)
         {
@@ -286,8 +286,7 @@ namespace IntegracionDAL
                         cmd.Parameters.AddWithValue("@VC_FECHA_INICIO",item.FechaInicio.ToString());
                         cmd.Parameters.AddWithValue("@VC_FECHA_FIN", item.FechaFin.ToString());
                         cmd.Parameters.AddWithValue("@VC_NUMERO_DIAS", item.NumeroDias.ToString());
-                        cmd.Parameters.AddWithValue("@VC_MOTIVO_LICENCIA", item.MotivoLicencia.ToString());
-                        cmd.Parameters.AddWithValue("@VC_GRUPO_LICENCIA", item.GrupoLicencia.ToString());
+                        cmd.Parameters.AddWithValue("@VC_MOTIVO_LICENCIA", item.MotivoLicencia.ToString());                        
                         cmd.Parameters.AddWithValue("@VC_TIPO_PAGO_LICENCIA", item.TipoPagoLicencia.ToString());
                         cmd.Parameters.AddWithValue("@VC_SITUACION_OPERACION", item.SituacionOperacion.ToString());
                         cmd.Parameters.AddWithValue("@VC_FECHA_HORA_OPERACION_REGISTRO_ORACLE", item.FechaHoraOperacionRegistroOracle.ToString());
@@ -331,6 +330,7 @@ namespace IntegracionDAL
                         cmd.Parameters.AddWithValue("@VC_NRO_DOC_IDENTIDAD", item.NroDocIdentidad.ToString());
                         cmd.Parameters.AddWithValue("@VC_FECHA_CESE", item.FechaCese.ToString());
                         cmd.Parameters.AddWithValue("@VC_MOTIVO_CESE", item.MotivoCese.ToString());
+                        cmd.Parameters.AddWithValue("@VC_MOTIVO_BBSS", item.MotivoBBSS.ToString());
                         cmd.Parameters.AddWithValue("@VC_INDICADOR_INDEMNIZACION", item.IndicadorIndemnizacion.ToString());
                         cmd.Parameters.AddWithValue("@VC_INDICADOR_PREAVISO", item.IndicadorPreaviso.ToString());
                         cmd.Parameters.AddWithValue("@VC_FORMA_PAGO", item.FormaPago.ToString());
@@ -428,9 +428,10 @@ namespace IntegracionDAL
                         cmd.Parameters.AddWithValue("@VC_PUEBLO_PERTENENCIA", item.PuebloPertenencia.ToString());
                         cmd.Parameters.AddWithValue("@VC_CODIGO_BANCO", item.CodigoBanco.ToString());
                         cmd.Parameters.AddWithValue("@VC_NUMERO_CUENTA", item.NumeroCuenta.ToString());
-                        cmd.Parameters.AddWithValue("@VC_MONEDA", item.Moneda.ToString());
+                        cmd.Parameters.AddWithValue("@VC_MONEDA_CUENTA", item.MonedaCuenta.ToString());
                         cmd.Parameters.AddWithValue("@VC_TIPO_CUENTA", item.TipoCuenta.ToString());
                         cmd.Parameters.AddWithValue("@VC_SUELDO", item.Sueldo.ToString());
+                        cmd.Parameters.AddWithValue("@VC_MONEDA_SUELDO", item.MonedaSueldo.ToString());                        
                         cmd.Parameters.AddWithValue("@VC_CODIGO_REGIMEN_SALARIAL", item.CodigoRegimenSalarial.ToString());
                         cmd.Parameters.AddWithValue("@VC_CODIGO_FORMA_PAGO", item.CodigoFormaPago.ToString());
                         cmd.Parameters.AddWithValue("@VC_TIPO_PAGO", item.TipoPago.ToString());
@@ -501,50 +502,50 @@ namespace IntegracionDAL
                 }
             }
         }
-        protected void mInsertarSaldosBD(List<BE_SaldoVacaciones>ListSaldos, string ConexionPais)
-        {
-            using (SqlConnection connection = new SqlConnection(ConexionPais))
-            {
-                try
-                {
-                    foreach (var item in ListSaldos)
-                    {
+        //protected void mInsertarSaldosBD(List<BE_SaldoVacaciones>ListSaldos, string ConexionPais)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(ConexionPais))
+        //    {
+        //        try
+        //        {
+        //            foreach (var item in ListSaldos)
+        //            {
 
-                        SqlCommand cmd = new SqlCommand("FINT_SP_INSERTA_INFO_ORACLE_SALDO_VACACIONES", connection);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandTimeout = 10000;
-                        connection.Open();
+        //                SqlCommand cmd = new SqlCommand("FINT_SP_INSERTA_INFO_ORACLE_SALDO_VACACIONES", connection);
+        //                cmd.CommandType = CommandType.StoredProcedure;
+        //                cmd.CommandTimeout = 10000;
+        //                connection.Open();
 
-                        cmd.Parameters.AddWithValue("@VC_CODIGO_PAIS", item.CodigoPais.ToString());
-                        cmd.Parameters.AddWithValue("@VC_CODIGO_COMPANIA", item.CodigoCompania.ToString());
-                        cmd.Parameters.AddWithValue("@VC_CODIGO_EMPLEADO_FRACTAL", item.CodigoEmpleadoFRACTAL.ToString());
-                        cmd.Parameters.AddWithValue("@VC_CODIGO_EMPLEADO_ORACLE", item.CodigoEmpleadoOracle.ToString());
-                        cmd.Parameters.AddWithValue("@VC_CODIGO_TIPO_DOC_IDENTIDAD", item.CodigoTipoDocIdentidad.ToString());
-                        cmd.Parameters.AddWithValue("@VC_NRO_DOC_IDENTIDAD", item.NroDocIdentidad.ToString());
-                        cmd.Parameters.AddWithValue("@VC_FECHA_INICIO", item.FechaInicio.ToString());
-                        cmd.Parameters.AddWithValue("@VC_FECHA_FIN", item.FechaFin.ToString());
-                        cmd.Parameters.AddWithValue("@VC_NUMERO_DIAS", item.NumeroDias.ToString());
-                        cmd.Parameters.AddWithValue("@VC_MOTIVO_LICENCIA", item.MotivoLicencia.ToString());
-                        cmd.Parameters.AddWithValue("@VC_GRUPO_LICENCIA", item.GrupoLicencia.ToString());
-                        cmd.Parameters.AddWithValue("@VC_TIPO_PAGO_LICENCIA", item.TipoPagoLicencia.ToString());
-                        cmd.Parameters.AddWithValue("@VC_SITUACION_OPERACION", item.SituacionOperacion.ToString());
-                        cmd.Parameters.AddWithValue("@VC_FECHA_HORA_OPERACION_REGISTRO_ORACLE", item.FechaHoraOperacionRegistroOracle.ToString());
-                        cmd.Parameters.AddWithValue("@VC_IDENTIFICADOR_ULTIMO_USUARIO", item.IdentificadorUltimoUsuario.ToString());
-                        cmd.Parameters.AddWithValue("@VC_CORREO_ULTIMO_USUARIO", item.CorreoUltimoUsuario.ToString());
-                        cmd.ExecuteNonQuery();
+        //                cmd.Parameters.AddWithValue("@VC_CODIGO_PAIS", item.CodigoPais.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_CODIGO_COMPANIA", item.CodigoCompania.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_CODIGO_EMPLEADO_FRACTAL", item.CodigoEmpleadoFRACTAL.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_CODIGO_EMPLEADO_ORACLE", item.CodigoEmpleadoOracle.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_CODIGO_TIPO_DOC_IDENTIDAD", item.CodigoTipoDocIdentidad.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_NRO_DOC_IDENTIDAD", item.NroDocIdentidad.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_FECHA_INICIO", item.FechaInicio.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_FECHA_FIN", item.FechaFin.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_NUMERO_DIAS", item.NumeroDias.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_MOTIVO_LICENCIA", item.MotivoLicencia.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_GRUPO_LICENCIA", item.GrupoLicencia.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_TIPO_PAGO_LICENCIA", item.TipoPagoLicencia.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_SITUACION_OPERACION", item.SituacionOperacion.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_FECHA_HORA_OPERACION_REGISTRO_ORACLE", item.FechaHoraOperacionRegistroOracle.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_IDENTIFICADOR_ULTIMO_USUARIO", item.IdentificadorUltimoUsuario.ToString());
+        //                cmd.Parameters.AddWithValue("@VC_CORREO_ULTIMO_USUARIO", item.CorreoUltimoUsuario.ToString());
+        //                cmd.ExecuteNonQuery();
 
-                        connection.Close();
-                    }
+        //                connection.Close();
+        //            }
 
 
-                }
-                catch (Exception ex)
-                {
+        //        }
+        //        catch (Exception ex)
+        //        {
 
-                    throw ex;
-                }
-            }
-        }
+        //            throw ex;
+        //        }
+        //    }
+        //}
         protected void mInsertarSindicatosBD(List<BE_Sindicatos>ListSindicatos, string ConexionPais)
         {
             using (SqlConnection connection = new SqlConnection(ConexionPais))
@@ -566,8 +567,8 @@ namespace IntegracionDAL
                         cmd.Parameters.AddWithValue("@VC_CODIGO_TIPO_DOC_IDENTIDAD", item.CodigoTipoDocIdentidad.ToString());
                         cmd.Parameters.AddWithValue("@VC_NRO_DOC_IDENTIDAD", item.NroDocIdentidad.ToString());
                         cmd.Parameters.AddWithValue("@VC_CODIGO_SINDICATO", item.CodigoSindicato.ToString());
-                        cmd.Parameters.AddWithValue("@VC_PORCENTAJE_SINDICATO", item.PorcentajeSindicato.ToString());
-                        cmd.Parameters.AddWithValue("@VC_MONTO_SINDICATO", item.MontoSindicato.ToString());
+                        cmd.Parameters.AddWithValue("@VC_FECHA_INICIO", item.FechaInicio.ToString());
+                        cmd.Parameters.AddWithValue("@VC_FECHA_FIN", item.FechaFin.ToString());
                         cmd.Parameters.AddWithValue("@VC_SITUACION_OPERACION", item.SituacionOperacion.ToString());
                         cmd.Parameters.AddWithValue("@VC_FECHA_HORA_OPERACION_REGISTRO_ORACLE", item.FechaHoraOperacionRegistroOracle.ToString());
                         cmd.Parameters.AddWithValue("@VC_IDENTIFICADOR_ULTIMO_USUARIO", item.IdentificadorUltimoUsuario.ToString());
@@ -611,11 +612,7 @@ namespace IntegracionDAL
                         cmd.Parameters.AddWithValue("@VC_FECHA_INICIO", item.FechaInicio.ToString());
                         cmd.Parameters.AddWithValue("@VC_FECHA_FIN", item.FechaFin.ToString());
                         cmd.Parameters.AddWithValue("@VC_NUMERO_DIAS", item.NumeroDias.ToString());
-                        cmd.Parameters.AddWithValue("@VC_TIPO_GOCE_VACACIONAL", item.TipoGoceVacacional.ToString());
-                        cmd.Parameters.AddWithValue("@VC_FECHA_INICIO_PERIODO_VACACIONAL", item.FechaInicioPeriodoVacacional.ToString());
-                        cmd.Parameters.AddWithValue("@VC_FECHA_FIN_PERIODO_VACACIONAL", item.FechaFinPeriodoVacacional.ToString());
-                        cmd.Parameters.AddWithValue("@VC_ANHIO_PERIODO_VACACIONAL", item.AnhioPeriodoVacacional.ToString());
-                        cmd.Parameters.AddWithValue("@VC_REGIMEN_TIPO_VACACION", item.RegimenTipoVacacion.ToString());
+                        cmd.Parameters.AddWithValue("@VC_TIPO_GOCE_VACACIONAL", item.TipoGoceVacacional.ToString());                       
                         cmd.Parameters.AddWithValue("@VC_FECHA_REGISTRO_VACACION", item.FechaRegistroVacacion.ToString());
                         cmd.Parameters.AddWithValue("@VC_SITUACION_OPERACION", item.SituacionOperacion.ToString());
                         cmd.Parameters.AddWithValue("@VC_FECHA_HORA_OPERACION_REGISTRO_ORACLE", item.FechaHoraOperacionRegistroOracle.ToString());

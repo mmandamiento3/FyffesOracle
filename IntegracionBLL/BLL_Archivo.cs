@@ -74,18 +74,18 @@ namespace IntegracionBLL
             }
         }
 
-        public void mInsertarArchivoSaldoVacaciones(List<BE_SaldoVacaciones> Saldos)
-        {
-            try
-            {
-                new DA_Integracion().mInsertarArchivoSaldosVacBD(Saldos);
-            }
-            catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException(ex, "Exception Policy");
-                throw ex;
-            }
-        }
+        //public void mInsertarArchivoSaldoVacaciones(List<BE_SaldoVacaciones> Saldos)
+        //{
+        //    try
+        //    {
+        //        new DA_Integracion().mInsertarArchivoSaldosVacBD(Saldos);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionPolicy.HandleException(ex, "Exception Policy");
+        //        throw ex;
+        //    }
+        //}
 
         public void mInsertarArchivoSindicatos(List<BE_Sindicatos>Sindicatos)
         {

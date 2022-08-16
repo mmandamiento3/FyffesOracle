@@ -25,7 +25,7 @@ namespace IntegracionOracle
             string Ceses = ConfigurationManager.AppSettings["Ceses"].ToString();
             string Ingresos = ConfigurationManager.AppSettings["Ingresos"].ToString();            
             string Permisos = ConfigurationManager.AppSettings["Permisos"].ToString();            
-            string Saldo = ConfigurationManager.AppSettings["Saldo"].ToString();            
+            //string Saldo = ConfigurationManager.AppSettings["Saldo"].ToString();            
             string Sindicatos = ConfigurationManager.AppSettings["Sindicatos"].ToString();            
             string Vacaciones = ConfigurationManager.AppSettings["Vacaciones"].ToString();            
                        
@@ -58,10 +58,10 @@ namespace IntegracionOracle
                     {
                         mListarPermisos(archivo);
                     }
-                    if (archivo.Name.StartsWith(Saldo))
-                    {
-                        mListarSaldoVacaciones(archivo);
-                    }
+                    //if (archivo.Name.StartsWith(Saldo))
+                    //{
+                    //    mListarSaldoVacaciones(archivo);
+                    //}
                     if (archivo.Name.StartsWith(Sindicatos))
                     {
                         mListarSindicatos(archivo);
@@ -91,13 +91,12 @@ namespace IntegracionOracle
                 FechaInicio = p.Split(separador)[6],
                 FechaFin = p.Split(separador)[7],
                 NumeroDias = p.Split(separador)[8],
-                MotivoLicencia = p.Split(separador)[9],
-                GrupoLicencia = p.Split(separador)[10],
-                TipoPagoLicencia = p.Split(separador)[11],
-                SituacionOperacion = p.Split(separador)[12],
-                FechaHoraOperacionRegistroOracle = p.Split(separador)[13],
-                IdentificadorUltimoUsuario = p.Split(separador)[14],
-                CorreoUltimoUsuario = p.Split(separador)[15]
+                MotivoLicencia = p.Split(separador)[9],               
+                TipoPagoLicencia = p.Split(separador)[10],
+                SituacionOperacion = p.Split(separador)[11],
+                FechaHoraOperacionRegistroOracle = p.Split(separador)[12],
+                IdentificadorUltimoUsuario = p.Split(separador)[13],
+                CorreoUltimoUsuario = p.Split(separador)[14]
             });
         
 
@@ -120,8 +119,7 @@ namespace IntegracionOracle
                             FechaInicio = item.FechaInicio.ToString(),
                             FechaFin = item.FechaFin.ToString(),
                             NumeroDias = item.NumeroDias.ToString(),
-                            MotivoLicencia = item.MotivoLicencia.ToString(),
-                            GrupoLicencia = item.GrupoLicencia.ToString(),
+                            MotivoLicencia = item.MotivoLicencia.ToString(),                            
                             TipoPagoLicencia = item.TipoPagoLicencia.ToString(),
                             SituacionOperacion = item.SituacionOperacion.ToString(),
                             FechaHoraOperacionRegistroOracle = item.FechaHoraOperacionRegistroOracle.ToString(),
@@ -162,13 +160,14 @@ namespace IntegracionOracle
                 NroDocIdentidad = p.Split(separador)[5],
                 FechaCese = p.Split(separador)[6],
                 MotivoCese = p.Split(separador)[7],
-                IndicadorIndemnizacion = p.Split(separador)[8],
-                IndicadorPreaviso = p.Split(separador)[9],
-                FormaPago = p.Split(separador)[10],
-                SituacionOperacion = p.Split(separador)[11],
-                FechaHoraOperacionRegistroOracle = p.Split(separador)[12],
-                IdentificadorUltimoUsuario = p.Split(separador)[13],
-                CorreoUltimoUsuario = p.Split(separador)[14],
+                MotivoBBSS = p.Split(separador)[8],
+                IndicadorIndemnizacion = p.Split(separador)[9],
+                IndicadorPreaviso = p.Split(separador)[10],
+                FormaPago = p.Split(separador)[11],
+                SituacionOperacion = p.Split(separador)[12],
+                FechaHoraOperacionRegistroOracle = p.Split(separador)[13],
+                IdentificadorUltimoUsuario = p.Split(separador)[14],
+                CorreoUltimoUsuario = p.Split(separador)[15]
                
             });
 
@@ -191,13 +190,14 @@ namespace IntegracionOracle
                             NroDocIdentidad = item.NroDocIdentidad.ToString(),
                             FechaCese = item.FechaCese.ToString(),
                             MotivoCese = item.MotivoCese.ToString(),
+                            MotivoBBSS  = item.MotivoBBSS.ToString(),
                             IndicadorIndemnizacion = item.IndicadorIndemnizacion.ToString(),
                             IndicadorPreaviso = item.IndicadorPreaviso.ToString(),
                             FormaPago = item.FormaPago.ToString(),
                             SituacionOperacion = item.SituacionOperacion.ToString(),
-                            FechaHoraOperacionRegistroOracle = item.SituacionOperacion.ToString(),
-                            IdentificadorUltimoUsuario = item.FechaHoraOperacionRegistroOracle.ToString(),
-                            CorreoUltimoUsuario = item.IdentificadorUltimoUsuario.ToString(),
+                            FechaHoraOperacionRegistroOracle = item.FechaHoraOperacionRegistroOracle.ToString(),
+                            IdentificadorUltimoUsuario = item.IdentificadorUltimoUsuario.ToString(),
+                            CorreoUltimoUsuario = item.CorreoUltimoUsuario.ToString()
                             
                         });
                     }
@@ -288,19 +288,20 @@ namespace IntegracionOracle
                 PuebloPertenencia = p.Split(separador)[58],
                 CodigoBanco = p.Split(separador)[59],
                 NumeroCuenta = p.Split(separador)[60],
-                Moneda = p.Split(separador)[61],
+                MonedaCuenta = p.Split(separador)[61], /*Modificado*/
                 TipoCuenta = p.Split(separador)[62],
                 Sueldo = p.Split(separador)[63],
-                CodigoRegimenSalarial = p.Split(separador)[64],
-                CodigoFormaPago = p.Split(separador)[65],
-                TipoPago = p.Split(separador)[66],
-                CodigoPeriodicidadPago = p.Split(separador)[67],
-                NumeroHijos = p.Split(separador)[68],
-                IndicadorConyuge = p.Split(separador)[69],
-                FechaHoraOperacionRegistroOracle = p.Split(separador)[70],
-                NumeroOperacionOracle = p.Split(separador)[71],
-                IdentificadorUltimoUsuario = p.Split(separador)[72],
-                CorreoUltimoUsuario = p.Split(separador)[73],               
+                MonedaSueldo = p.Split(separador)[64],/*Agregado ::: Modificar numeración*/
+                CodigoRegimenSalarial = p.Split(separador)[65],
+                CodigoFormaPago = p.Split(separador)[66],
+                TipoPago = p.Split(separador)[67],
+                CodigoPeriodicidadPago = p.Split(separador)[68],
+                NumeroHijos = p.Split(separador)[69],
+                IndicadorConyuge = p.Split(separador)[70],
+                FechaHoraOperacionRegistroOracle = p.Split(separador)[71],
+                NumeroOperacionOracle = p.Split(separador)[72],
+                IdentificadorUltimoUsuario = p.Split(separador)[73],
+                CorreoUltimoUsuario = p.Split(separador)[74]           
 
             });
 
@@ -375,9 +376,10 @@ namespace IntegracionOracle
                             PuebloPertenencia                 =   item.PuebloPertenencia.ToString(),
                             CodigoBanco                       =   item.CodigoBanco.ToString(),
                             NumeroCuenta                      =   item.NumeroCuenta.ToString(),
-                            Moneda                            =   item.Moneda.ToString(),
+                            MonedaCuenta                      =   item.MonedaCuenta.ToString(),
                             TipoCuenta                        =   item.TipoCuenta.ToString(),
                             Sueldo                            =   item.Sueldo.ToString(),
+                            MonedaSueldo                      =   item.MonedaSueldo .ToString(),
                             CodigoRegimenSalarial             =   item.CodigoRegimenSalarial.ToString(),
                             CodigoFormaPago                   =   item.CodigoFormaPago.ToString(),
                             TipoPago                          =   item.TipoPago.ToString(),
@@ -482,77 +484,77 @@ namespace IntegracionOracle
 
         }
 
-        static void mListarSaldoVacaciones(FileInfo txt)
-        {
-            BLL_Archivo BLClass = new BLL_Archivo();
-            char separador = '|';
-            string[] texto = File.ReadAllLines(txt.FullName);
+        //static void mListarSaldoVacaciones(FileInfo txt)
+        //{
+        //    BLL_Archivo BLClass = new BLL_Archivo();
+        //    char separador = '|';
+        //    string[] texto = File.ReadAllLines(txt.FullName);
 
-            var model = texto.Select(p => new
-            {
-                CodigoPais = p.Split(separador)[0],
-                CodigoCompania = p.Split(separador)[1],
-                CodigoEmpleadoFRACTAL = p.Split(separador)[2],
-                CodigoEmpleadoOracle = p.Split(separador)[3],
-                CodigoTipoDocIdentidad = p.Split(separador)[4],
-                NroDocIdentidad = p.Split(separador)[5],
-                FechaInicio = p.Split(separador)[6],
-                FechaFin = p.Split(separador)[7],
-                NumeroDias = p.Split(separador)[8],
-                MotivoLicencia = p.Split(separador)[9],
-                GrupoLicencia = p.Split(separador)[10],
-                TipoPagoLicencia = p.Split(separador)[11],
-                SituacionOperacion = p.Split(separador)[12],
-                FechaHoraOperacionRegistroOracle = p.Split(separador)[13],
-                IdentificadorUltimoUsuario = p.Split(separador)[14],
-                CorreoUltimoUsuario = p.Split(separador)[15]
-            });
+        //    var model = texto.Select(p => new
+        //    {
+        //        CodigoPais = p.Split(separador)[0],
+        //        CodigoCompania = p.Split(separador)[1],
+        //        CodigoEmpleadoFRACTAL = p.Split(separador)[2],
+        //        CodigoEmpleadoOracle = p.Split(separador)[3],
+        //        CodigoTipoDocIdentidad = p.Split(separador)[4],
+        //        NroDocIdentidad = p.Split(separador)[5],
+        //        FechaInicio = p.Split(separador)[6],
+        //        FechaFin = p.Split(separador)[7],
+        //        NumeroDias = p.Split(separador)[8],
+        //        MotivoLicencia = p.Split(separador)[9],
+        //        GrupoLicencia = p.Split(separador)[10],
+        //        TipoPagoLicencia = p.Split(separador)[11],
+        //        SituacionOperacion = p.Split(separador)[12],
+        //        FechaHoraOperacionRegistroOracle = p.Split(separador)[13],
+        //        IdentificadorUltimoUsuario = p.Split(separador)[14],
+        //        CorreoUltimoUsuario = p.Split(separador)[15]
+        //    });
 
 
-            List<BE_SaldoVacaciones> ListaSaldoVacaciones = new List<BE_SaldoVacaciones>();
-            try
-            {
-                if (model.Count() > 0) //validamos que hayan registros
-                {
-                    foreach (var item in model.Where((item, index) => index != 0)) //Quitamos el primer registro (cabecera)
-                    {
-                        //Insertamos en la LISTA
-                        ListaSaldoVacaciones.Add(new BE_SaldoVacaciones
-                        {
-                            CodigoPais = item.CodigoPais.ToString(),
-                            CodigoCompania = item.CodigoCompania.ToString(),
-                            CodigoEmpleadoFRACTAL = item.CodigoEmpleadoFRACTAL.ToString(),
-                            CodigoEmpleadoOracle = item.CodigoEmpleadoOracle.ToString(),
-                            CodigoTipoDocIdentidad = item.CodigoTipoDocIdentidad.ToString(),
-                            NroDocIdentidad = item.NroDocIdentidad.ToString(),
-                            FechaInicio = item.FechaInicio.ToString(),
-                            FechaFin = item.FechaFin.ToString(),
-                            NumeroDias = item.NumeroDias.ToString(),
-                            MotivoLicencia = item.MotivoLicencia.ToString(),
-                            GrupoLicencia = item.GrupoLicencia.ToString(),
-                            TipoPagoLicencia = item.TipoPagoLicencia.ToString(),
-                            SituacionOperacion = item.SituacionOperacion.ToString(),
-                            FechaHoraOperacionRegistroOracle = item.FechaHoraOperacionRegistroOracle.ToString(),
-                            IdentificadorUltimoUsuario = item.IdentificadorUltimoUsuario.ToString(),
-                            CorreoUltimoUsuario = item.CorreoUltimoUsuario.ToString()
-                        });
-                    }
+        //    List<BE_SaldoVacaciones> ListaSaldoVacaciones = new List<BE_SaldoVacaciones>();
+        //    try
+        //    {
+        //        if (model.Count() > 0) //validamos que hayan registros
+        //        {
+        //            foreach (var item in model.Where((item, index) => index != 0)) //Quitamos el primer registro (cabecera)
+        //            {
+        //                //Insertamos en la LISTA
+        //                ListaSaldoVacaciones.Add(new BE_SaldoVacaciones
+        //                {
+        //                    CodigoPais = item.CodigoPais.ToString(),
+        //                    CodigoCompania = item.CodigoCompania.ToString(),
+        //                    CodigoEmpleadoFRACTAL = item.CodigoEmpleadoFRACTAL.ToString(),
+        //                    CodigoEmpleadoOracle = item.CodigoEmpleadoOracle.ToString(),
+        //                    CodigoTipoDocIdentidad = item.CodigoTipoDocIdentidad.ToString(),
+        //                    NroDocIdentidad = item.NroDocIdentidad.ToString(),
+        //                    FechaInicio = item.FechaInicio.ToString(),
+        //                    FechaFin = item.FechaFin.ToString(),
+        //                    NumeroDias = item.NumeroDias.ToString(),
+        //                    MotivoLicencia = item.MotivoLicencia.ToString(),
+        //                    GrupoLicencia = item.GrupoLicencia.ToString(),
+        //                    TipoPagoLicencia = item.TipoPagoLicencia.ToString(),
+        //                    SituacionOperacion = item.SituacionOperacion.ToString(),
+        //                    FechaHoraOperacionRegistroOracle = item.FechaHoraOperacionRegistroOracle.ToString(),
+        //                    IdentificadorUltimoUsuario = item.IdentificadorUltimoUsuario.ToString(),
+        //                    CorreoUltimoUsuario = item.CorreoUltimoUsuario.ToString()
+        //                });
+        //            }
 
-                    BLClass.mInsertarArchivoSaldoVacaciones(ListaSaldoVacaciones);
-                }
-                else
-                {
-                    Console.WriteLine("No se encontraron registros");
-                    Console.ReadKey();
-                }
-            }
-            catch (Exception ex)
-            {
+        //            BLClass.mInsertarArchivoSaldoVacaciones(ListaSaldoVacaciones);
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine(//}"No se encontraron registros");
+        //            Console.ReadKey();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
+        //        throw ex;
 
-            }
-        }
+        //    }
+        
 
         static void mListarSindicatos (FileInfo txt)
         {
@@ -569,8 +571,8 @@ namespace IntegracionOracle
                 CodigoTipoDocIdentidad = p.Split(separador)[4],
                 NroDocIdentidad = p.Split(separador)[5],
                 CodigoSindicato = p.Split(separador)[6],
-                PorcentajeSindicato = p.Split(separador)[7],
-                MontoSindicato = p.Split(separador)[8],
+                FechaInicio = p.Split(separador)[7],
+                FechaFin = p.Split(separador)[8],               
                 SituacionOperacion = p.Split(separador)[9],
                 FechaHoraOperacionRegistroOracle = p.Split(separador)[10],
                 IdentificadorUltimoUsuario = p.Split(separador)[11],
@@ -596,8 +598,8 @@ namespace IntegracionOracle
                             CodigoTipoDocIdentidad = item.CodigoTipoDocIdentidad.ToString(),
                             NroDocIdentidad = item.NroDocIdentidad.ToString(),
                             CodigoSindicato = item.CodigoSindicato.ToString(),
-                            PorcentajeSindicato = item.PorcentajeSindicato.ToString(),
-                            MontoSindicato = item.MontoSindicato.ToString(),
+                            FechaInicio = item.FechaInicio.ToString(),
+                            FechaFin = item.FechaFin.ToString(),
                             SituacionOperacion = item.SituacionOperacion.ToString(),
                             FechaHoraOperacionRegistroOracle = item.FechaHoraOperacionRegistroOracle.ToString(),
                             IdentificadorUltimoUsuario = item.IdentificadorUltimoUsuario.ToString(),
@@ -639,16 +641,12 @@ namespace IntegracionOracle
                 FechaInicio = p.Split(separador)[6],
                 FechaFin = p.Split(separador)[7],
                 NumeroDias = p.Split(separador)[8],
-                TipoGoceVacacional = p.Split(separador)[9],
-                FechaInicioPeriodoVacacional = p.Split(separador)[10],
-                FechaFinPeriodoVacacional = p.Split(separador)[11],
-                AnhioPeriodoVacacional = p.Split(separador)[12],
-                RegimenTipoVacacion = p.Split(separador)[13],
-                FechaRegistroVacacion = p.Split(separador)[14],
-                SituacionOperacion = p.Split(separador)[15],
-                FechaHoraOperacionRegistroOracle = p.Split(separador)[16],
-                IdentificadorUltimoUsuario = p.Split(separador)[17],
-                CorreoUltimoUsuario = p.Split(separador)[18]
+                TipoGoceVacacional = p.Split(separador)[9],             
+                FechaRegistroVacacion = p.Split(separador)[10],
+                SituacionOperacion = p.Split(separador)[11],
+                FechaHoraOperacionRegistroOracle = p.Split(separador)[12],
+                IdentificadorUltimoUsuario = p.Split(separador)[13],
+                CorreoUltimoUsuario = p.Split(separador)[14]
             });
 
 
@@ -671,11 +669,7 @@ namespace IntegracionOracle
                             FechaInicio = item.FechaInicio.ToString(),
                             FechaFin = item.FechaFin.ToString(),
                             NumeroDias = item.NumeroDias.ToString(),
-                            TipoGoceVacacional = item.TipoGoceVacacional.ToString(),
-                            FechaInicioPeriodoVacacional = item.FechaInicioPeriodoVacacional.ToString(),
-                            FechaFinPeriodoVacacional = item.FechaFinPeriodoVacacional.ToString(),
-                            AnhioPeriodoVacacional = item.AnhioPeriodoVacacional.ToString(),
-                            RegimenTipoVacacion = item.RegimenTipoVacacion.ToString(),
+                            TipoGoceVacacional = item.TipoGoceVacacional.ToString(),                           
                             FechaRegistroVacacion = item.FechaRegistroVacacion.ToString(),
                             SituacionOperacion = item.SituacionOperacion.ToString(),
                             FechaHoraOperacionRegistroOracle = item.FechaHoraOperacionRegistroOracle.ToString(),

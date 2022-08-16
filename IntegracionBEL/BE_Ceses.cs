@@ -14,8 +14,9 @@ namespace IntegracionBEL
         public String CodigoEmpleadoOracle { get; set; }
         public String CodigoTipoDocIdentidad { get; set; }
         public String NroDocIdentidad { get; set; }       
-        public String FechaCese { get; set; }      
+        public String FechaCese { get; set; }           
         public String MotivoCese { get; set; }
+        public String MotivoBBSS { get; set; }
         public String IndicadorIndemnizacion { get; set; }
         public String IndicadorPreaviso { get; set; }
         public String FormaPago { get; set; }
