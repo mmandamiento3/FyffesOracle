@@ -15,6 +15,7 @@ namespace IntegracionOracle
         static void Main(string[] args)
         {
             CargarArchivo();
+           
 
         }
 
@@ -42,7 +43,7 @@ namespace IntegracionOracle
             {
                 foreach (FileInfo archivo in Archivos) //Recorremos los archivos .txt
                 {
-                    if (archivo.Name.StartsWith(Ausencias))
+                    if (archivo.Name.StartsWith(Ausencias))  /*ok*/
                     {
                         mListarAusencias(archivo);
                     }
@@ -50,7 +51,7 @@ namespace IntegracionOracle
                     {
                         mListarCese(archivo);
                     }
-                    if (archivo.Name.StartsWith(Ingresos))
+                    if (archivo.Name.StartsWith(Ingresos)) /*ok*/
                     {
                         mListarIngresos(archivo);
                     }
@@ -139,7 +140,8 @@ namespace IntegracionOracle
             catch (Exception ex)
             {
 
-                throw ex;
+                RegistrarLog(" | Archivo: " + txt.ToString() + " | Mensaje: " + ex.Message);
+                //throw ex;
 
             }
         }
@@ -152,22 +154,22 @@ namespace IntegracionOracle
 
             var model = texto.Select(p => new
             {
-                CodigoPais = p.Split(separador)[0],
-                CodigoCompania = p.Split(separador)[1],
-                CodigoEmpleadoFRACTAL = p.Split(separador)[2],
-                CodigoEmpleadoOracle = p.Split(separador)[3],
-                CodigoTipoDocIdentidad = p.Split(separador)[4],
-                NroDocIdentidad = p.Split(separador)[5],
-                FechaCese = p.Split(separador)[6],
-                MotivoCese = p.Split(separador)[7],
-                MotivoBBSS = p.Split(separador)[8],
-                IndicadorIndemnizacion = p.Split(separador)[9],
-                IndicadorPreaviso = p.Split(separador)[10],
-                FormaPago = p.Split(separador)[11],
-                SituacionOperacion = p.Split(separador)[12],
-                FechaHoraOperacionRegistroOracle = p.Split(separador)[13],
-                IdentificadorUltimoUsuario = p.Split(separador)[14],
-                CorreoUltimoUsuario = p.Split(separador)[15]
+                CodigoPais                          = p.Split(separador)[0],
+                CodigoCompania                      = p.Split(separador)[1],
+                CodigoEmpleadoFRACTAL               = p.Split(separador)[2],
+                CodigoEmpleadoOracle                = p.Split(separador)[3],
+                CodigoTipoDocIdentidad              = p.Split(separador)[4],
+                NroDocIdentidad                     = p.Split(separador)[5],
+                FechaCese                           = p.Split(separador)[6],
+                MotivoCese                          = p.Split(separador)[7],
+                MotivoBBSS                          = p.Split(separador)[8],
+                IndicadorIndemnizacion              = p.Split(separador)[9],
+                IndicadorPreaviso                   = p.Split(separador)[10],
+                FormaPago                           = p.Split(separador)[11],
+                SituacionOperacion                  = p.Split(separador)[12],
+                FechaHoraOperacionRegistroOracle    = p.Split(separador)[13],
+                IdentificadorUltimoUsuario          = p.Split(separador)[14],
+                CorreoUltimoUsuario                 = p.Split(separador)[15]
                
             });
 
@@ -213,7 +215,7 @@ namespace IntegracionOracle
             catch (Exception ex)
             {
 
-                throw ex;
+                RegistrarLog(" | Archivo: " + txt.ToString() + " | Mensaje: " + ex.Message);
 
             }
 
@@ -406,7 +408,7 @@ namespace IntegracionOracle
             catch (Exception ex)
             {
 
-                throw ex;
+                RegistrarLog(" | Archivo: " + txt.ToString() + " | Mensaje: " + ex.Message);
 
             }
 
@@ -478,7 +480,7 @@ namespace IntegracionOracle
             catch (Exception ex)
             {
 
-                throw ex;
+                RegistrarLog(" | Archivo: " + txt.ToString() + " | Mensaje: " + ex.Message);
 
             }
 
@@ -619,7 +621,7 @@ namespace IntegracionOracle
             catch (Exception ex)
             {
 
-                throw ex;
+                RegistrarLog(" | Archivo: " + txt.ToString() + " | Mensaje: " + ex.Message);
 
             }
         }
@@ -689,9 +691,54 @@ namespace IntegracionOracle
             catch (Exception ex)
             {
 
-                throw ex;
+                RegistrarLog(" | Archivo: " + txt.ToString() + " | Mensaje: " + ex.Message);
 
             }
+        }
+
+
+
+
+
+        static void RegistrarLog(string mensaje)
+        {
+            
+            string DirectorioArchivos = ConfigurationManager.AppSettings["RutaArchivo"].ToString(); //Ruta de la carpeta base en el appconfig
+            string NameDirec = "Logs";
+
+            if (!Directory.Exists(Path.Combine(DirectorioArchivos,NameDirec)))
+            {
+                Directory.CreateDirectory(Path.Combine(DirectorioArchivos, NameDirec));
+            }
+
+
+            string strDia = DateTime.Now.Date.Day.ToString().Length == 1 ? "0" + DateTime.Now.Date.Day.ToString() : DateTime.Now.Date.Day.ToString();
+            string strMes = DateTime.Now.Date.Month.ToString().Length == 1 ? "0" + DateTime.Now.Date.Day.ToString() : DateTime.Now.Date.Day.ToString();
+            string strAnio = DateTime.Now.Date.Year.ToString();
+
+            string path = Path.Combine(DirectorioArchivos, NameDirec);
+            string ArchivoLog = path + "/" + strAnio + strMes + strDia + ".txt";
+
+            if (!File.Exists(ArchivoLog))
+            {
+                File.Create(ArchivoLog).Dispose();
+                using (StreamWriter sw = File.AppendText(ArchivoLog))
+                {
+                    sw.WriteLine("Fecha y Hora: " + DateTime.Now.ToString() + " | Mensaje: " + mensaje);
+                    sw.Close();
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(ArchivoLog))
+                {
+                    sw.WriteLine("Fecha: " + DateTime.Now.ToString() + mensaje);
+                    sw.Close();
+                }
+            }
+
+
+
         }
     }
 }
